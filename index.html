@@ -1,117 +1,631 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Project Equinox</title>
-  <meta name="description" content="A simple one-page portfolio for Minecraft datapack projects." />
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Edgington - Business & Data Analyst</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1A3E6B;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --dark-gray: #333333;
+            --border-gray: #E0E0E0;
+            --accent-blue: #2E5C9A;
+            --dark-bg: #0F1419;
+            --dark-card: #1A1F2E;
+            --dark-text: #E0E0E0;
+            --dark-accent: #3B82F6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 
+                         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            color: var(--dark-text);
+            background: linear-gradient(135deg, #0F1419 0%, #1a1a2e 25%, #16213e 50%, #0F1419 75%, #0f0f1e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.02) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        section, nav, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(15, 20, 25, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .logo {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.3rem;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(15, 20, 25, 0.8) 0%, rgba(26, 31, 46, 0.8) 100%);
+            color: var(--white);
+            padding: 6rem 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(59, 130, 246, 0.15);
+            color: var(--dark-accent);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .social-links a:hover {
+            background-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--dark-accent);
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        /* About Section */
+        .about-content {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--dark-text);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: rgba(26, 31, 46, 0.6);
+            padding: 2rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--dark-accent);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+            border-left: 4px solid var(--dark-accent);
+            background-color: rgba(26, 31, 46, 0.8);
+        }
+
+        .project-card h3 {
+            color: var(--dark-accent);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            color: var(--dark-text);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .project-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(59, 130, 246, 0.2);
+            color: var(--dark-accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .project-btn {
+            display: inline-block;
+            background-color: var(--dark-accent);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border: 1px solid var(--dark-accent);
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .project-btn:hover {
+            background-color: transparent;
+            color: var(--dark-accent);
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background-color: rgba(26, 31, 46, 0.6);
+            padding: 2rem;
+            border-radius: 4px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            background-color: rgba(26, 31, 46, 0.8);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--dark-accent);
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-item {
+            background-color: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: var(--dark-text);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background-color: rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.5);
+            color: var(--dark-accent);
+        }
+
+        /* Resume Button */
+        .resume-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background-color: var(--dark-accent);
+            color: var(--white);
+            padding: 0.9rem 1.8rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--dark-accent);
+            margin-top: 1.5rem;
+            cursor: pointer;
+        }
+
+        .resume-btn:hover {
+            background-color: transparent;
+            color: var(--dark-accent);
+            box-shadow: 0 0 16px rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .resume-btn::before {
+            content: '↓';
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(15, 20, 25, 0.95);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(59, 130, 246, 0.15);
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: opacity 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: rgba(15, 20, 25, 0.98);
+                padding: 1rem 0;
+                gap: 0;
+                border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.75rem 1.5rem;
+                border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 2.5rem 0;
+            }
+
+            nav .container {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .projects-grid,
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card,
+            .skill-category {
+                padding: 1.5rem;
+            }
+
+            .social-links {
+                gap: 0.75rem;
+            }
+
+            .social-links a {
+                width: 38px;
+                height: 38px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="site" role="banner">
-      <h1 class="title">Buckeye's Datapack Dump <span class="badge">Portfolio</span></h1>
-      <p class="subtitle">
-        Collection of Datapacks I have made mostly for personal use. Mostly focused on improving progression/balance while maintaining a vanilla feel.
-      </p>
-      <ul> Ideas
-        <li>frostbite in snow biome</li>
-        <li>dynamic lights</li>
-        <li>better husbandry</li>
-        <li>waypoint system</li>
-        <li>freecam datapack</li>
-      </ul>
-    </header>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Michael Edgington</a>
+            <button class="menu-btn" id="menuBtn">☰</button>
+            <ul id="navMenu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <main role="main" aria-label="Project grid" class="grid">
-      <!-- ===== Project Card 1 ===== -->
-      <a class="card" href="#" aria-label="Open Biome Lock datapack">
-        <div class="media">
-          <img src="images/blockwords.png" alt="Blockwords Logo" />
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Michael Edgington</h1>
+            <p class="subtitle">Business & Data Analyst | MIS Graduate, The Ohio State University</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/mbedgington" title="LinkedIn" target="_blank">in</a>
+                <a href="https://github.com/medgington00" title="GitHub" target="_blank">⚡</a>
+                <a href="mailto:mbedge2000@live.com" title="Email">✉</a>
+            </div>
         </div>
-        <div class="content">
-          <h3>BlockWords</h3>
-          <div class="meta">Minigame • 1.21+</div>
-          <p>Give your team hints to guess the correct blocks, but be careful not to reveal too much...</p>
-          <div class="actions">
-            <span class="btn">Download</span>
-            <span class="btn ghost">View Docs</span>
-          </div>
-        </div>
-      </a>
+    </section>
 
-      <!-- ===== Project Card 2 ===== -->
-      <a class="card" href="#" aria-label="Open Cave Systems datapack">
-        <div class="media">
-          <img src="images/cave-systems.jpg" alt="Sprawling cave with stalactites and glow lichen lighting the walls" />
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About</h2>
+            <div class="about-content">
+                <p>
+                    OSU MIS graduate with a background in IT systems analysis, business operations, and data-driven problem solving. Combining technical skills with strong communication and stakeholder experience. Seeking Data Analyst and Business Analyst roles in Chicago, Philadelphia, and beyond.
+                </p>
+                <a href="resume.pdf" download class="resume-btn">Download Resume</a>
+            </div>
         </div>
-        <div class="content">
-          <h3>Cave Systems</h3>
-          <div class="meta">Exploration • 1.21</div>
-          <p>Depth-based mechanics, underground smelting boosts, and spelunking-focused recipes to make living below Y=40 worthwhile.</p>
-          <div class="actions">
-            <span class="btn">Download</span>
-            <span class="btn ghost">View Docs</span>
-          </div>
-        </div>
-      </a>
+    </section>
 
-      <!-- ===== Project Card 3 ===== -->
-      <a class="card" href="#" aria-label="Open Balanced Trades datapack">
-        <div class="media">
-          <img src="images/balanced-trades.jpg" alt="Villager trading hall with balanced prices and resource sinks" />
-        </div>
-        <div class="content">
-          <h3>Balanced Trades</h3>
-          <div class="meta">Economy • 1.20–1.21</div>
-          <p>Reworks villager trades to slow early-game power creep while rewarding town planning and infrastructure.</p>
-          <div class="actions">
-            <span class="btn">Download</span>
-            <span class="btn ghost">View Docs</span>
-          </div>
-        </div>
-      </a>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>E-Commerce Sales Analysis</h3>
+                    <p>Analyzed 12 months of retail transaction data using SQL to uncover revenue trends, top products, and customer behavior — with actionable business recommendations.</p>
+                    <div class="project-badges">
+                        <span class="badge">SQL</span>
+                        <span class="badge">SQLite</span>
+                        <span class="badge">Data Analysis</span>
+                    </div>
+                    <a href="#" class="project-btn">View on GitHub</a>
+                </div>
 
-      <!-- ===== Project Card 4 ===== -->
-      <a class="card" href="#" aria-label="Open Survival Overhaul datapack">
-        <div class="media">
-          <img src="images/survival-overhaul.jpg" alt="Player base with farms, windmill, and storage barn at sunset" />
+                <div class="project-card">
+                    <h3>Altior</h3>
+                    <p>A strategic card logic game designed and built from scratch. Players must match cards based on dynamic logic rules that evolve throughout gameplay, combining strategy with quick thinking.</p>
+                    <div class="project-badges">
+                        <span class="badge">HTML</span>
+                        <span class="badge">CSS</span>
+                        <span class="badge">JavaScript</span>
+                    </div>
+                    <a href="https://medgington00.github.io/altior/" target="_blank" class="project-btn">Play Game</a>
+                </div>
+            </div>
         </div>
-        <div class="content">
-          <h3>Survival Overhaul</h3>
-          <div class="meta">Progression • 1.21</div>
-          <p>Food tiers, weather risks, and infrastructure-driven bonuses that make settlement building the optimal path.</p>
-          <div class="actions">
-            <span class="btn">Download</span>
-            <span class="btn ghost">View Docs</span>
-          </div>
-        </div>
-      </a>
+    </section>
 
-      <!-- ===== Project Card 5 ===== -->
-      <a class="card" href="#" aria-label="Open Template datapack">
-        <div class="media">
-          <img src="images/template.jpg" alt="Abstract Minecraft-style block pattern placeholder" />
-        </div>
-        <div class="content">
-          <h3>Project Title</h3>
-          <div class="meta">Category • Version</div>
-          <p>Short description of what this datapack does and why players should try it. Keep it to two lines if possible.</p>
-          <div class="actions">
-            <span class="btn">Download</span>
-            <span class="btn ghost">View Docs</span>
-          </div>
-        </div>
-      </a>
-    </main>
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Data & Analysis</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">Excel</span>
+                        <span class="skill-item">Tableau</span>
+                        <span class="skill-item">Power BI</span>
+                        <span class="skill-item">Google Sheets</span>
+                    </div>
+                </div>
 
-    <footer class="site" role="contentinfo">
-      <p>© <span id="year"></span> Michael Edgington </p>
+                <div class="skill-category">
+                    <h3>Development</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">TypeScript</span>
+                        <span class="skill-item">HTML/CSS</span>
+                        <span class="skill-item">React</span>
+                        <span class="skill-item">C#</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Business & Systems</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Requirements Gathering</span>
+                        <span class="skill-item">Process Documentation</span>
+                        <span class="skill-item">Systems Analysis</span>
+                        <span class="skill-item">Stakeholder Communication</span>
+                        <span class="skill-item">SDLC</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>
+                <a href="mailto:mbedge2000@live.com">Email</a> •
+                <a href="https://linkedin.com/in/mbedgington" target="_blank">LinkedIn</a> •
+                <a href="https://github.com/medgington00" target="_blank">GitHub</a>
+            </p>
+        </div>
     </footer>
-  </div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
