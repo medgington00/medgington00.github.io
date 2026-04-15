@@ -212,6 +212,12 @@
             gap: 2rem;
         }
 
+        .project-card:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+            max-width: calc(50% - 1rem);
+            margin: 0 auto;
+        }
+
         .project-card {
             background-color: rgba(26, 31, 46, 0.6);
             padding: 2rem;
@@ -329,7 +335,7 @@
 
         /* Resume Button */
         .resume-btn {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 0.6rem;
             background-color: var(--dark-accent);
@@ -343,6 +349,9 @@
             border: 1px solid var(--dark-accent);
             margin-top: 1.5rem;
             cursor: pointer;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .resume-btn:hover {
@@ -353,7 +362,7 @@
         }
 
         .resume-btn::before {
-            content: '↓';
+            content: '🗎';
             font-weight: 700;
         }
 
@@ -593,15 +602,14 @@
                         <span class="skill-item">Tableau</span>
                         <span class="skill-item">Power BI</span>
                         <span class="skill-item">Google Sheets</span>
+                        <span class="skill-item">Python(pandas)</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
                     <h3>Development</h3>
                     <div class="skill-list">
-                        <span class="skill-item">Java</span>
                         <span class="skill-item">JavaScript</span>
-                        <span class="skill-item">TypeScript</span>
                         <span class="skill-item">HTML/CSS</span>
                         <span class="skill-item">React</span>
                         <span class="skill-item">C#</span>
