@@ -172,6 +172,7 @@
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 1.2rem;
+            line-height: 1;
             border: 1px solid rgba(59, 130, 246, 0.3);
         }
 
@@ -207,29 +208,26 @@
 
         /* Projects Section */
         .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 2rem;
-        }
-
-        .project-card:last-child:nth-child(odd) {
-            grid-column: 1 / -1;
-            max-width: calc(50% - 1rem);
-            margin: 0 auto;
+            justify-content: center;
         }
 
         .project-card {
+            flex: 1 1 300px;
+            max-width: calc(50% - 1rem);
             background-color: rgba(26, 31, 46, 0.6);
             padding: 2rem;
             border-radius: 4px;
-            border-left: 4px solid var(--dark-accent);
             border: 1px solid rgba(59, 130, 246, 0.2);
+            border-left-width: 4px;
             transition: all 0.3s ease;
         }
 
         .project-card:hover {
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
-            border-left: 4px solid var(--dark-accent);
+            border-left-color: var(--dark-accent);
             background-color: rgba(26, 31, 46, 0.8);
         }
 
@@ -282,6 +280,12 @@
             background-color: transparent;
             color: var(--dark-accent);
             box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .project-btn-group {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
         }
 
         /* Skills Section */
@@ -350,7 +354,7 @@
             margin-top: 1.5rem;
             cursor: pointer;
             width: fit-content;
-            margin-left: auto;
+            margin-left: 0;
             margin-right: auto;
         }
 
@@ -485,7 +489,14 @@
                 font-size: 1.3rem;
             }
 
-            .projects-grid,
+            .projects-grid {
+                flex-direction: column;
+            }
+
+            .project-card {
+                max-width: 100%;
+            }
+
             .skills-container {
                 grid-template-columns: 1fr;
             }
@@ -526,11 +537,11 @@
         <div class="container">
             <img src="headshot.jpg" alt="Michael Edgington" class="headshot">
             <h1>Michael Edgington</h1>
-            <p class="subtitle">Business & Data Analyst | MIS Graduate, The Ohio State University</p>
+            <p class="subtitle">Data Analyst | End-to-End Analysis, Visualization & Predictive Modeling</p>
             <div class="social-links">
                 <a href="https://linkedin.com/in/mbedgington" title="LinkedIn" target="_blank">in</a>
                 <a href="https://github.com/medgington00" title="GitHub" target="_blank"><img src="github.svg" alt="GitHub" style="width:1em;height:1em;vertical-align:middle;filter:invert(47%) sepia(98%) saturate(500%) hue-rotate(195deg) brightness(100%) contrast(95%);"></a>
-                <a href="mailto:mbedge2000@live.com" title="Email">✉</a>
+                <a href="mailto:michael.b.edgington@gmail.com" title="Email">✉</a>
             </div>
         </div>
     </section>
@@ -541,7 +552,7 @@
             <h2>About</h2>
             <div class="about-content">
                 <p>
-                    OSU MIS graduate with a background in IT systems analysis, business operations, and data-driven problem solving. Combining technical skills with strong communication and stakeholder experience. Seeking Data Analyst and Business Analyst roles in Chicago, Philadelphia, and beyond.
+                    OSU MIS graduate with hands-on experience in SQL, Python, and data visualization. I build end-to-end analyses from raw data to actionable business recommendations. Currently seeking Data Analyst and Business Analyst roles, open to relocation.
                 </p>
                 <a href="resume.pdf" download class="resume-btn">Download Resume</a>
             </div>
@@ -555,35 +566,42 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <h3>E-Commerce Sales Analysis</h3>
-                    <p>Analyzed 12 months of retail transaction data using SQL to uncover revenue trends, top products, and customer behavior with actionable business recommendations.</p>
+                    <p>Analyzed 539K+ e-commerce transactions across 38 countries using SQL to uncover revenue patterns, customer concentration risk, and seasonal trends. Delivered four strategic business recommendations including international expansion targets and a wholesale account retention program.</p>
                     <div class="project-badges">
                         <span class="badge">SQL</span>
-                        <span class="badge">SQLite</span>
+                        <span class="badge">Tableau</span>
+                        <span class="badge">Business Intelligence</span>
                         <span class="badge">Data Analysis</span>
                     </div>
-                    <a href="https://github.com/medgington00/e-commerce-sales-analysis" target="_blank" class="project-btn">View on GitHub</a>
-                </div>
-
-                <div class="project-card">
-                    <h3>E-Commerce Dashboard</h3>
-                    <p>Interactive Tableau dashboard visualizing findings from the SQL analysis including monthly revenue trends, top products by revenue, geographic performance across 38 countries, and order patterns by day of week.</p>
-                    <div class="project-badges">
-                        <span class="badge">Tableau</span>
-                        <span class="badge">Data Visualization</span>
-                        <span class="badge">Business Intelligence</span>
+                    <div class="project-btn-group">
+                        <a href="https://github.com/medgington00/e-commerce-sales-analysis" target="_blank" class="project-btn">View on GitHub</a>
+                        <a href="https://public.tableau.com/views/e-commercedata_17750021609920/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" class="project-btn">View Dashboard</a>
                     </div>
-                    <a href="https://public.tableau.com/views/e-commercedata_17750021609920/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" class="project-btn">View Dashboard</a>
                 </div>
 
                 <div class="project-card">
-                    <h3>Altior</h3>
-                    <p>A strategic card logic game designed and built from scratch. Players must match cards based on dynamic logic rules that evolve throughout gameplay, combining strategy with quick thinking.</p>
+                    <h3>Customer Churn Analysis</h3>
+                    <p>End-to-end analysis of 7,000+ telecom customer records to identify churn drivers and deliver data-backed retention recommendations. Built and compared logistic regression and random forest models achieving 80% accuracy, identifying contract type, tenure, and monthly charges as the top predictors of customer churn.</p>
                     <div class="project-badges">
-                        <span class="badge">HTML</span>
-                        <span class="badge">CSS</span>
+                        <span class="badge">Python</span>
+                        <span class="badge">pandas</span>
+                        <span class="badge">scikit-learn</span>
+                        <span class="badge">Exploratory Data Analysis</span>
+                        <span class="badge">Predictive Modeling</span>
+                    </div>
+                    <a href="https://github.com/medgington00/customer-churn" target="_blank" class="project-btn">View on GitHub</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Federal Job Market Dashboard</h3>
+                    <p>Live dashboard analyzing federal hiring trends across thousands of active job postings. Visualizes posting volume over time, top hiring organizations, geographic distribution by state, salary ranges, and top job titles updated dynamically on each search query.</p>
+                    <div class="project-badges">
+                        <span class="badge">REST API Integration</span>
+                        <span class="badge">Data Visualization</span>
+                        <span class="badge">Trend Analysis</span>
                         <span class="badge">JavaScript</span>
                     </div>
-                    <a href="https://medgington00.github.io/altior/" target="_blank" class="project-btn">Play Game</a>
+                    <a href="https://medgington00.github.io/jobs-dashboard/" target="_blank" class="project-btn">View Dashboard</a>
                 </div>
             </div>
         </div>
@@ -602,17 +620,18 @@
                         <span class="skill-item">Tableau</span>
                         <span class="skill-item">Power BI</span>
                         <span class="skill-item">Google Sheets</span>
-                        <span class="skill-item">Python(pandas)</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">scikit-learn</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
-                    <h3>Development</h3>
+                    <h3>Tools & Technologies</h3>
                     <div class="skill-list">
                         <span class="skill-item">JavaScript</span>
                         <span class="skill-item">HTML/CSS</span>
-                        <span class="skill-item">React</span>
-                        <span class="skill-item">C#</span>
+                        <span class="skill-item">Jupyter Notebook</span>
+                        <span class="skill-item">Git/GitHub</span>
                     </div>
                 </div>
 
