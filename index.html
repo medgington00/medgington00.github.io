@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Michael Edgington - Business & Data Analyst</title>
+    <title>Michael Edgington - Customer Experience Analyst</title>
     <style>
         * {
             margin: 0;
@@ -146,11 +146,36 @@
             font-weight: 700;
         }
 
+        .hero .eyebrow {
+            color: var(--dark-accent);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
         .hero .subtitle {
             font-size: 1.3rem;
-            margin-bottom: 2rem;
+            margin: 0 auto 1.25rem;
             opacity: 0.95;
             font-weight: 300;
+            max-width: 760px;
+        }
+
+        .hero .hero-summary {
+            color: var(--dark-text);
+            font-size: 1.05rem;
+            max-width: 780px;
+            margin: 0 auto 1.25rem;
+        }
+
+        .hero .hero-focus {
+            color: var(--white);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 0 auto;
+            max-width: 760px;
         }
 
         .social-links {
@@ -231,10 +256,37 @@
             background-color: rgba(26, 31, 46, 0.8);
         }
 
+        .featured-project {
+            flex-basis: 100%;
+            max-width: 100%;
+            background: linear-gradient(135deg, rgba(26, 31, 46, 0.82) 0%, rgba(20, 184, 166, 0.1) 100%);
+            border-color: rgba(20, 184, 166, 0.34);
+            border-left-color: #14B8A6;
+            box-shadow: 0 8px 20px rgba(20, 184, 166, 0.08);
+        }
+
+        .featured-project:hover {
+            border-left-color: #5EEAD4;
+            box-shadow: 0 10px 24px rgba(20, 184, 166, 0.14);
+        }
+
+        .project-label {
+            display: inline-block;
+            color: #5EEAD4;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+        }
+
         .project-card h3 {
             color: var(--dark-accent);
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
+        }
+
+        .featured-project h3 {
+            color: #5EEAD4;
         }
 
         .project-card p {
@@ -445,6 +497,14 @@
                 font-size: 1rem;
             }
 
+            .hero .hero-summary {
+                font-size: 0.98rem;
+            }
+
+            .hero .hero-focus {
+                font-size: 0.9rem;
+            }
+
             h2 {
                 font-size: 1.5rem;
             }
@@ -483,6 +543,11 @@
 
             .hero .subtitle {
                 font-size: 0.9rem;
+            }
+
+            .hero .hero-summary,
+            .hero .hero-focus {
+                font-size: 0.86rem;
             }
 
             h2 {
@@ -537,7 +602,7 @@
         <div class="container">
             <img src="headshot.jpg" alt="Michael Edgington" class="headshot">
             <h1>Michael Edgington</h1>
-            <p class="subtitle">Data Analyst | End-to-End Analysis, Visualization & Predictive Modeling</p>
+            <p class="subtitle">Data Analyst focused on Customer Experience & Retention | SQL · Python · Tableau · Power BI | Voice of Customer, detractor analysis, churn modeling</p>
             <div class="social-links">
                 <a href="https://linkedin.com/in/mbedgington" title="LinkedIn" target="_blank">in</a>
                 <a href="https://github.com/medgington00" title="GitHub" target="_blank"><img src="github.svg" alt="GitHub" style="width:1em;height:1em;vertical-align:middle;filter:invert(47%) sepia(98%) saturate(500%) hue-rotate(195deg) brightness(100%) contrast(95%);"></a>
@@ -552,7 +617,7 @@
             <h2>About</h2>
             <div class="about-content">
                 <p>
-                    OSU MIS graduate with hands-on experience in SQL, Python, and data visualization. I build end-to-end analyses from raw data to actionable business recommendations. Currently seeking Data Analyst and Business Analyst roles, open to relocation.
+                    I'm a data analyst focused on customer experience and retention. I build analyses that turn voice-of-customer signals into prioritized, cross-functional action — the work a CX operations team actually ships through.
                 </p>
                 <a href="resume.pdf" download class="resume-btn">Download Resume</a>
             </div>
@@ -564,18 +629,20 @@
         <div class="container">
             <h2>Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
-                    <h3>E-Commerce Sales Analysis</h3>
-                    <p>Analyzed 539K+ e-commerce transactions across 38 countries using SQL to uncover revenue patterns, customer concentration risk, and seasonal trends. Delivered four strategic business recommendations including international expansion targets and a wholesale account retention program.</p>
+                <div class="project-card featured-project">
+                    <span class="project-label">Main Project</span>
+                    <h3>Marketplace CX Diagnostic</h3>
+                    <p>Diagnosed customer experience friction across 100K orders and 78K reviews on a simulated marketplace. Built a SQL keyword taxonomy on 17,822 detractor complaints, quantified a 1.57x late-order detractor lift, flagged 12 logistics hotspot states and a 24-seller problem cohort, and packaged six owner-assigned recommendations for Logistics, Seller Quality, and Retention.</p>
                     <div class="project-badges">
                         <span class="badge">SQL</span>
-                        <span class="badge">Tableau</span>
-                        <span class="badge">Business Intelligence</span>
-                        <span class="badge">Data Analysis</span>
+                        <span class="badge">Power BI</span>
+                        <span class="badge">Voice of Customer</span>
+                        <span class="badge">CX Analysis</span>
+                        <span class="badge">Root Cause Taxonomy</span>
                     </div>
                     <div class="project-btn-group">
-                        <a href="https://github.com/medgington00/e-commerce-sales-analysis" target="_blank" class="project-btn">View on GitHub</a>
-                        <a href="https://public.tableau.com/views/e-commercedata_17750021609920/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" class="project-btn">View Dashboard</a>
+                        <a href="https://github.com/medgington00/marketplace-cx-diagnostic" target="_blank" class="project-btn">View on GitHub</a>
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiOTg4MDQyNzctZGQwOC00ODFhLTlkZjctYTYyNGI5MTRkOTFlIiwidCI6ImJiY2FkYzkxLTRmZTktNDU4Mi1iNWJhLTRkNjgyNTQzNmJlYSJ9" target="_blank" class="project-btn">View Power BI Dashboard</a>
                     </div>
                 </div>
 
@@ -590,6 +657,21 @@
                         <span class="badge">Predictive Modeling</span>
                     </div>
                     <a href="https://github.com/medgington00/customer-churn" target="_blank" class="project-btn">View on GitHub</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>E-Commerce Sales Analysis</h3>
+                    <p>Analyzed 539K+ e-commerce transactions across 38 countries using SQL to uncover revenue patterns, customer concentration risk, and seasonal trends. Delivered four strategic business recommendations including international expansion targets and a wholesale account retention program.</p>
+                    <div class="project-badges">
+                        <span class="badge">SQL</span>
+                        <span class="badge">Tableau</span>
+                        <span class="badge">Business Intelligence</span>
+                        <span class="badge">Data Analysis</span>
+                    </div>
+                    <div class="project-btn-group">
+                        <a href="https://github.com/medgington00/e-commerce-sales-analysis" target="_blank" class="project-btn">View on GitHub</a>
+                        <a href="https://public.tableau.com/views/e-commercedata_17750021609920/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" class="project-btn">View Dashboard</a>
+                    </div>
                 </div>
 
                 <div class="project-card">
